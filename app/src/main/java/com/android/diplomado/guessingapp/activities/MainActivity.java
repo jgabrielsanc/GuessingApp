@@ -1,16 +1,16 @@
 package com.android.diplomado.guessingapp.activities;
-
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.diplomado.guessingapp.R;
 import com.android.diplomado.guessingapp.adapter.CategoryAdapter;
 import com.android.diplomado.guessingapp.adapter.OnItemClickListener;
+import com.android.diplomado.guessingapp.endpoints.ControllerManager;
 import com.android.diplomado.guessingapp.models.Category;
 import com.android.diplomado.guessingapp.utils.Util;
 
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Category category, int position) {
                 Toast.makeText(MainActivity.this, "You have selected " + category.getName(), Toast.LENGTH_SHORT).show();
+                Log.i("Test", ControllerManager.getCategoryData(position).toString());
             }
 
         });

@@ -63,7 +63,6 @@ import retrofit2.http.GET;
          if(dataList == null || dataList.isEmpty())
              retrieveDataList();
 
-
          return dataList;
 
      }

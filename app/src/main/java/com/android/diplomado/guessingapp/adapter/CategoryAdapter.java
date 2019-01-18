@@ -32,9 +32,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(layout, viewGroup, false);
 
-        ViewHolder viewHolder = new ViewHolder(view);
-
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -62,7 +60,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             image = itemView.findViewById(R.id.imageViewCategory);
         }
 
-        public void bind(final Category category, final OnItemClickListener itemClickListener) {
+        void bind(final Category category, final OnItemClickListener itemClickListener) {
             name.setText(category.getName());
             description.setText(category.getDescription());
             Picasso.get().load(category.getImage()).fit().into(image);

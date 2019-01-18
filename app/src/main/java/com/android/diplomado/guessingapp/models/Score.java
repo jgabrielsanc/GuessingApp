@@ -22,12 +22,16 @@ public class Score {
 
     public void setIncorrectAnswer(Data data) {failure.add(data);}
 
-    public int getCorrectAnswers() {
-        return success.size();
+    public List<Data> getCorrectAnswers() {
+        return success;
     }
 
-    public int getIncorrectAnswers() {
-        return failure.size();
+    public List<Data> getIncorrectAnswers() {
+        return failure;
+    }
+
+    public boolean isWinner() {
+        return getCorrectAnswers().size() > getIncorrectAnswers().size();
     }
 
 }

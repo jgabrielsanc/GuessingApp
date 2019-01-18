@@ -24,8 +24,22 @@ public class GameRoundController {
         return trivia.getTrivia(i);
     }
 
-    public void setCorrectAnswer(Data data) {
+    public List<Data> getTrivias() {return trivia.getTrivias();}
 
+    public List<Data> getCorrectAnswers() {return score.getCorrectAnswers();}
+
+    public List<Data> getIncorrectAnswers() {return score.getIncorrectAnswers(); }
+
+    public void setCorrectAnswer(Data data) {
+        score.setCorrectAnswer(data);
+    }
+
+    public void setIncorrectAnswer(Data data) {
+        score.setIncorrectAnswer(data);
+    }
+
+    public boolean isWinner() {
+        return score.isWinner();
     }
 
 

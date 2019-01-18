@@ -1,5 +1,6 @@
 package com.android.diplomado.guessingapp.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Score {
@@ -9,22 +10,17 @@ public class Score {
     private List<Data> failure;
 
 
-
-    public List<Data> getSuccess() {
-        return success;
+    public Score() {
+        success = new ArrayList<>();
+        failure = new ArrayList<>();
     }
 
-    public void setSuccess(List<Data> success) {
-        this.success = success;
+
+    public void setCorrectAnswer(Data data) {
+        success.add(data);
     }
 
-    public List<Data> getFailure() {
-        return failure;
-    }
-
-    public void setFailure(List<Data> failure) {
-        this.failure = failure;
-    }
+    public void setIncorrectAnswer(Data data) {failure.add(data);}
 
     public int getCorrectAnswers() {
         return success.size();

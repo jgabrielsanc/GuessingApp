@@ -1,5 +1,6 @@
 package com.android.diplomado.guessingapp.activities;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -15,6 +16,7 @@ import com.android.diplomado.guessingapp.endpoints.ControllerManager;
 import com.android.diplomado.guessingapp.models.Category;
 import com.android.diplomado.guessingapp.utils.Util;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,11 +40,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Category category, int position) {
                 Toast.makeText(MainActivity.this, "You have selected " + category.getName(), Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(MainActivity.this, TriviaActivity.class);
-                intent.putExtra("position", position);
+
+                Log.i("Fasfasfa",new ControllerManager().getCategoryData(position).toString());
+                intent.putExtra("categoryData", (Serializable) new ControllerManager().getCategoryData(position));
                 startActivity(intent);
-//                Log.i("Test", ControllerManager.getCategoryData(position).toString());
+
             }
 
         });

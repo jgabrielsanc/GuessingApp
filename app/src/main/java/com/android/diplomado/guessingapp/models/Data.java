@@ -1,8 +1,11 @@
 package com.android.diplomado.guessingapp.models;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class Data {
+public class Data  implements Serializable {
 
    public String name;
 

@@ -1,5 +1,9 @@
 package com.android.diplomado.guessingapp.activities;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,13 +17,16 @@ import com.android.diplomado.guessingapp.models.Data;
 
 import java.util.List;
 
-public class TriviaActivity extends AppCompatActivity {
+public class TriviaActivity extends AppCompatActivity  {
 
     private TextView textViewTrivia;
-
+r
     private Bundle bundle;
     private int counter = 0;
-    private int timer = 27;
+    private int timer = 300;
+    private SensorManager sensorManager;
+    private Sensor sensorGyro;
+    private GameRoundController gameRoundController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,29 +37,34 @@ public class TriviaActivity extends AppCompatActivity {
 
         bundle = getIntent().getExtras();
 
+
+
+
         startGame();
+
+
+
 
 
     }
 
     private void startGame() {
         if (bundle != null) {
-
             int position = bundle.getInt("position");
 
-            final GameRoundController gameRoundController = new GameRoundController(ControllerManager.getCategoryData(position));
+         gameRoundController  = new GameRoundController(ControllerManager.getCategoryData(position));
 
-            new CountDownTimer(5000, 1000) {
+            new CountDownTimer(10000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
                     textViewTrivia.setText("La trivia empezara en: " + millisUntilFinished / 1000);
+
+
                 }
 
                 public void onFinish() {
 
-                    Log.i("Test", gameRoundController.getTrivias().toString());
-
-                    List<Data> data = gameRoundController.getTrivias();
+                    List<Data> data = gameRoundController.getRandomTrivia();
                     setTimer(data);
                 }
             }.start();
@@ -61,20 +73,28 @@ public class TriviaActivity extends AppCompatActivity {
 
     private void setTimer(final List<Data> data) {
 
-        new CountDownTimer(30000, 1000) {
+        new CountDownTimer(300000, 1000) {
 
             //TODO Cambiar esta logica dummy con el sensor y la puntuacion
             public void onTick(long millisUntilFinished) {
-                if ((millisUntilFinished / 1000) == timer) {
-                    textViewTrivia.setText(data.get(counter).getName());
+                if (millisUntilFinished / 1000 == timer) {
+                    textViewTrivia.setText(data.get(counter).toString());
+
                     counter++;
-                    timer = timer -5;
+                    timer = timer - 30;
+
                 }
+
+
             }
 
             public void onFinish() {
                 textViewTrivia.setText("done!");
             }
+
         }.start();
     }
+
 }
+
+

@@ -1,5 +1,7 @@
 package com.android.diplomado.guessingapp.endpoints;
 
+import android.util.Log;
+
 import com.android.diplomado.guessingapp.models.Data;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -50,7 +52,7 @@ import retrofit2.http.GET;
 
             @Override
             public void onFailure(Call<JsonArray> call, Throwable t) {
-
+                Log.i("Failure","Failure");
             }
         });
 

@@ -47,7 +47,6 @@ import retrofit2.http.GET;
                 for(JsonElement element : jsonObject.getAsJsonArray("results"))
                     dataList.add(new Data(element.getAsJsonObject().get("name").toString()));
 
-                Log.i("Testing Value", dataList.toString());
 
             }
 

@@ -50,6 +50,8 @@ import retrofit2.http.GET;
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
 
+                Log.i("Failure","Failure");
+
             }
         });
 

@@ -42,6 +42,11 @@ public class GameRoundController {
         return score.isWinner();
     }
 
+    public List<Data> getRandomTrivia() {
+        return trivia.getRandomQuestions();
+    }
+
+
 
 
 

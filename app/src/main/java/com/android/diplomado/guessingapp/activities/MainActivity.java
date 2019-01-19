@@ -41,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(Category category, int position) {
                 Toast.makeText(MainActivity.this, "You have selected " + category.getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, TriviaActivity.class);
-
-                Log.i("Fasfasfa",new ControllerManager().getCategoryData(position).toString());
-                intent.putExtra("categoryData", (Serializable) new ControllerManager().getCategoryData(position));
+                intent.putExtra("position", position);
                 startActivity(intent);
 
             }
